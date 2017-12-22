@@ -16,12 +16,11 @@ class TitleCommand extends Command implements PluginIdentifiableCommand
 
     public $usage = "/titleplus <player / @all> <title> <subtitle> <fadeIn (20 = 1sec)> <duration (20 = 1sec)> <fadeOut (20 = 1sec)>";
     private $main;
-    private $name;
 
     public function __construct(Title $main, $name)
     {
-        parent::__construct($name, $main);
         $this->plugin = $main;
+        parent::__construct($name);
         $this->setPermission("titleplus.cmd");
         $this->setDescription("Send Title with command !");
         $this->setUsage($this->usage);
