@@ -7,6 +7,7 @@ use misteboss\Title;
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
 use pocketmine\command\PluginIdentifiableCommand;
+use pocketmine\plugin\Plugin;
 use pocketmine\Player;
 use pocketmine\utils\TextFormat as TF;
 
@@ -15,23 +16,22 @@ class TitleCommand extends Command implements PluginIdentifiableCommand
 
     public $usage = "/titleplus <player / @all> <title> <subtitle> <fadeIn (20 = 1sec)> <duration (20 = 1sec)> <fadeOut (20 = 1sec)>";
     private $main;
-    private $name;
 
     public function __construct(Title $main, $name)
     {
-        parent::__construct($name, $main);
         $this->plugin = $main;
+        parent::__construct($name);
         $this->setPermission("titleplus.cmd");
         $this->setDescription("Send Title with command !");
         $this->setUsage($this->usage);
     }
 
-    public function getPlugin()
+    public function getPlugin() : Plugin
     {
         return $this->plugin;
     }
 
-    public function execute(CommandSender $sender, $currentAlias, array $args)
+    public function execute(CommandSender $sender,string $currentAlias, array $args)
     {
         if (!$this->plugin->isEnabled()) return false;
         if ($sender instanceof Player) {
