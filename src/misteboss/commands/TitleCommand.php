@@ -26,7 +26,7 @@ class TitleCommand extends Command implements PluginIdentifiableCommand
         $this->setUsage($this->usage);
     }
 
-    public function getPlugin()
+    public function getPlugin() : Plugin
     {
         return $this->plugin;
     }
