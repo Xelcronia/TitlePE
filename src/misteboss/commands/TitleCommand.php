@@ -32,7 +32,7 @@ class TitleCommand extends Command implements PluginIdentifiableCommand
         return $this->plugin;
     }
 
-    public function execute(CommandSender $sender, $currentAlias, array $args)
+    public function execute(CommandSender $sender,string $currentAlias, array $args)
     {
         if (!$this->plugin->isEnabled()) return false;
         if ($sender instanceof Player) {
